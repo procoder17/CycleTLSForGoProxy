@@ -42,7 +42,7 @@ func clientBuilder(browser Browser, dialer proxy.ContextDialer, timeout int, dis
 // # Example Usage
 // import (
 //
-//	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+//	"github.com/Procoder17/CycleTLSForGoProxy/cycletls"
 //	http "github.com/Danny-Dasilva/fhttp" // note this is a drop-in replacement for net/http
 //
 // )

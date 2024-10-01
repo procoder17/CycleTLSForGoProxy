@@ -5,7 +5,7 @@ package cycletls_test
 
 import (
 	//"fmt"
-	cycletls "github.com/Danny-Dasilva/CycleTLS/cycletls"
+	cycletls "github.com/Procoder17/CycleTLSForGoProxy/cycletls"
 	"log"
 	"runtime"
 	"testing"

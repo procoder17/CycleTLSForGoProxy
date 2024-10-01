@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	// cycletls "../../../cycletls"
-	cycletls "github.com/Danny-Dasilva/CycleTLS/cycletls"
+	cycletls "github.com/Procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 type AkamaiOptions struct {

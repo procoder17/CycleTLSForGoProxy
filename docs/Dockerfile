@@ -12,7 +12,7 @@ RUN apt-get update && apt-get upgrade -y \
 # RUN bash nodesource_setup.sh
 # RUN apt-get install -y nodejs
 RUN wget -c https://dl.google.com/go/go1.16.9.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
-RUN git clone https://github.com/Danny-Dasilva/CycleTLS.git
+RUN git clone https://github.com/Procoder17/CycleTLSForGoProxy.git
 RUN export PATH=$PATH:/usr/local/go/bin
 WORKDIR /
 

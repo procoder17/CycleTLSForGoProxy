@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
 	"log"
 	"runtime"
 	"time"
+
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 	// "net/http"
 )
 

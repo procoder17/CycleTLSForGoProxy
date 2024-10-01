@@ -6,15 +6,15 @@
 	<img src="docs/media/Banner.svg" alt="CycleTLS"/>
 	<br>
 	
-Currently a WIP and in Active development. See the ![Projects](https://github.com/Danny-Dasilva/CycleTLS/projects/1) Tab for more info
+Currently a WIP and in Active development. See the ![Projects](https://github.com/Procoder17/CycleTLSForGoProxy/projects/1) Tab for more info
 
 	
 	
 
-![build](https://github.com/Danny-Dasilva/CycleTLS/actions/workflows/test_golang.yml/badge.svg)
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg)](http://godoc.org/github.com/Danny-Dasilva/CycleTLS/cycletls) 
-[![license](https://img.shields.io/github/license/Danny-Dasilva/CycleTLS.svg)](https://github.com/Danny-Dasilva/CycleTLS/blob/main/LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Danny-Dasilva/CycleTLS/cycletls)](https://goreportcard.com/report/github.com/Danny-Dasilva/CycleTLS/cycletls)
+![build](https://github.com/Procoder17/CycleTLSForGoProxy/actions/workflows/test_golang.yml/badge.svg)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg)](http://godoc.org/github.com/Procoder17/CycleTLSForGoProxy/cycletls) 
+[![license](https://img.shields.io/github/license/Procoder17/CycleTLSForGoProxy.svg)](https://github.com/Procoder17/CycleTLSForGoProxy/blob/main/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Procoder17/CycleTLSForGoProxy/cycletls)](https://goreportcard.com/report/github.com/Procoder17/CycleTLSForGoProxy/cycletls)
 [![npm version](https://img.shields.io/npm/v/axios.svg?style=flat-square)](https://www.npmjs.org/package/cycletls)
 </div>
 
@@ -104,7 +104,7 @@ package main
 
 import (
 	"log"
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/Procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 func main() {

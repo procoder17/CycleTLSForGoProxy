@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	cycletls "github.com/Danny-Dasilva/CycleTLS/cycletls"
+	cycletls "github.com/Procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 type CycleTLSOptions struct {
@@ -77,7 +77,7 @@ var CycleTLSResults = []CycleTLSOptions{
 		"771,4865-4867-4866-49195-49199-52393-52392-49196-49200-49162-49161-49171-49172-156-157-47-53-10,0-23-65281-10-11-35-16-5-51-43-13-45-28-21,29-23-24-25-256-257,0",
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:92.0) Gecko/20100101 Firefox/92.0",
 		200},
-		{"683732371e44e9583f7fa850fe09e602", // Safari on iOS 17.1.1
+	{"683732371e44e9583f7fa850fe09e602", // Safari on iOS 17.1.1
 		"771,4865-4866-4867-49196-49195-52393-49200-49199-52392-49162-157-156-53-47-49160-49170-10,0-23-65281-10-11-16-5-13-18-51-45-43-27-21,29-23-24-25,0",
 		"Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.1 Mobile/15E148 Safari/604.1",
 		200},

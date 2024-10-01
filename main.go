@@ -1,10 +1,11 @@
 package main
 
 import (
-	"./cycletls"
 	"log"
 	"runtime"
 	"time"
+
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 func main() {
@@ -23,6 +24,6 @@ func main() {
 	if err != nil {
 		log.Print("Request Failed: " + err.Error())
 	}
-	log.Println(response.Status,)
+	log.Println(response.Status)
 
 }

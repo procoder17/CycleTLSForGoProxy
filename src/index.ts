@@ -94,7 +94,7 @@ const handleSpawn = (debug: boolean, fileName: string, port: number, filePath?: 
       debug
         ? cleanExit(new Error(stderr))
         //TODO add Correct error logging url request/ response/
-        : cleanExit(`Error Processing Request (please open an issue https://github.com/Danny-Dasilva/CycleTLS/issues/new/choose) -> ${stderr}`, false).then(() => handleSpawn(debug, fileName, port));
+        : cleanExit(`Error Processing Request (please open an issue https://github.com/Procoder17/CycleTLSForGoProxy/issues/new/choose) -> ${stderr}`, false).then(() => handleSpawn(debug, fileName, port));
     }
   });
 }

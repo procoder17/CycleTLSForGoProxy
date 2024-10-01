@@ -7,7 +7,7 @@ import (
 	"log"
 	"testing"
 
-	cycletls "github.com/Danny-Dasilva/CycleTLS/cycletls"
+	cycletls "github.com/Procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 func TestRedirectEnabled(t *testing.T) {
