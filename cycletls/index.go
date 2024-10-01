@@ -1,17 +1,20 @@
 package cycletls
 
 import (
+	"bytes"
 	"encoding/json"
 	"flag"
-	http "github.com/Danny-Dasilva/fhttp"
-	"github.com/gorilla/websocket"
 	"io"
+	"io/ioutil"
 	"log"
 	nhttp "net/http"
 	"net/url"
 	"os"
 	"runtime"
 	"strings"
+
+	http "github.com/Danny-Dasilva/fhttp"
+	"github.com/gorilla/websocket"
 )
 
 // Options sets CycleTLS client options
@@ -80,7 +83,7 @@ func processRequest(request cycleTLSRequest) (result fullRequest) {
 		forceHTTP1:         request.Options.ForceHTTP1,
 	}
 
-	client, err := newClient(
+	client, err := NewClient(
 		browser,
 		request.Options.Timeout,
 		request.Options.DisableRedirect,
@@ -148,12 +151,12 @@ func processRequest(request cycleTLSRequest) (result fullRequest) {
 		}
 
 	}
-	headerOrder := parseUserAgent(request.Options.UserAgent).HeaderOrder
+	headeOrder := parseUserAgent(request.Options.UserAgent).HeaderOrder
 
 	//ordering the pseudo headers and our normal headers
 	req.Header = http.Header{
 		http.HeaderOrderKey:  headerorderkey,
-		http.PHeaderOrderKey: headerOrder,
+		http.PHeaderOrderKey: headeOrder,
 	}
 	//set our Host header
 	u, err := url.Parse(request.Options.URL)
@@ -241,14 +244,14 @@ func (client CycleTLS) Do(URL string, options Options, Method string) (response 
 
 	options.URL = URL
 	options.Method = Method
-	 // Set default values if not provided
-	 if options.Ja3 == "" {
-        options.Ja3 = "771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,18-35-65281-45-17513-27-65037-16-10-11-5-13-0-43-23-51,29-23-24,0"
-    }
-    if options.UserAgent == "" {
+	// Set default values if not provided
+	if options.Ja3 == "" {
+		options.Ja3 = "771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,18-35-65281-45-17513-27-65037-16-10-11-5-13-0-43-23-51,29-23-24,0"
+	}
+	if options.UserAgent == "" {
 		// Mac OS Chrome 121
-        options.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
-    }
+		options.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+	}
 	opt := cycleTLSRequest{"cycleTLSRequest", options}
 
 	res := processRequest(opt)
@@ -408,4 +411,117 @@ func main() {
 
 	setupRoutes()
 	log.Fatal(nhttp.ListenAndServe(*addr, nil))
+}
+
+func HandleRequest(client *http.Client, req *nhttp.Request) (res *nhttp.Response, err error) {
+
+	url := req.URL.Scheme + "://" + req.URL.Host + req.URL.Path
+
+	_req, err := http.NewRequest(req.Method, url, req.Body)
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	headerorder := []string{}
+
+	headerorder = append(headerorder,
+		"host",
+		"connection",
+		"cache-control",
+		"device-memory",
+		"viewport-width",
+		"rtt",
+		"downlink",
+		"ect",
+		"sec-ch-ua",
+		"sec-ch-ua-mobile",
+		"sec-ch-ua-full-version",
+		"sec-ch-ua-arch",
+		"sec-ch-ua-platform",
+		"sec-ch-ua-platform-version",
+		"sec-ch-ua-model",
+		"upgrade-insecure-requests",
+		"user-agent",
+		"accept",
+		"sec-fetch-site",
+		"sec-fetch-mode",
+		"sec-fetch-user",
+		"sec-fetch-dest",
+		"referer",
+		"accept-encoding",
+		"accept-language",
+		"cookie",
+	)
+
+	headermap := make(map[string]string)
+	//TODO: Shorten this
+	headerorderkey := []string{}
+	for _, key := range headerorder {
+		for k, v := range req.Header {
+			lowercasekey := strings.ToLower(k)
+			if key == lowercasekey {
+				headermap[k] = v[0]
+				headerorderkey = append(headerorderkey, lowercasekey)
+			}
+		}
+
+	}
+
+	headeOrder := parseUserAgent(req.UserAgent()).HeaderOrder
+
+	//ordering the pseudo headers and our normal headers
+	_req.Header = http.Header{
+		http.HeaderOrderKey:  headerorderkey,
+		http.PHeaderOrderKey: headeOrder,
+	}
+
+	_req.Header.Set("Host", req.URL.Host)
+	_req.Header.Set("user-agent", req.UserAgent())
+
+	defer client.CloseIdleConnections()
+
+	_resp, err := client.Do(_req)
+
+	encoding := _resp.Header["Content-Encoding"]
+	content := _resp.Header["Content-Type"]
+	bodyBytes, err := io.ReadAll(_resp.Body)
+
+	if err != nil {
+		log.Print("Parse Bytes" + err.Error())
+		return nil, err
+	}
+
+	Body := DecompressBody(bodyBytes, encoding, content)
+	headers := make(map[string]string)
+
+	for name, values := range _resp.Header {
+		if name == "Set-Cookie" {
+			headers[name] = strings.Join(values, "/,/")
+		} else {
+			for _, value := range values {
+				headers[name] = value
+			}
+		}
+	}
+	cookies := convertFHTTPCookiesToNetHTTPCookies(_resp.Cookies())
+
+	mime := strings.Split(req.Header.Get("Content-type"), ";")[0]
+
+	resp := &nhttp.Response{}
+	resp.Request = req
+	resp.TransferEncoding = req.TransferEncoding
+	resp.Header = make(nhttp.Header)
+	resp.Header.Add("Content-Type", mime)
+
+	for _, ck := range cookies {
+		resp.Header.Add("Set-Cookie", ck.String())
+	}
+	resp.StatusCode = _resp.StatusCode
+	resp.Status = nhttp.StatusText(_resp.StatusCode)
+	_buf := bytes.NewBufferString(Body)
+	resp.ContentLength = int64(_buf.Len())
+	resp.Body = ioutil.NopCloser(_buf)
+
+	return resp, err
 }

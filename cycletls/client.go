@@ -72,7 +72,7 @@ func NewTransportWithProxy(ja3 string, useragent string, proxy proxy.ContextDial
 }
 
 // newClient creates a new http client
-func newClient(browser Browser, timeout int, disableRedirect bool, UserAgent string, proxyURL ...string) (http.Client, error) {
+func NewClient(browser Browser, timeout int, disableRedirect bool, UserAgent string, proxyURL ...string) (http.Client, error) {
 	var dialer proxy.ContextDialer
 	if len(proxyURL) > 0 && len(proxyURL[0]) > 0 {
 		var err error
