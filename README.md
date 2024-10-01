@@ -11,17 +11,17 @@ Accepting Community Support and PR's
 	
 	
 
-![build](https://github.com/Danny-Dasilva/CycleTLS/actions/workflows/test_golang.yml/badge.svg)
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg)](http://godoc.org/github.com/Danny-Dasilva/CycleTLS/cycletls) 
-[![license](https://img.shields.io/github/license/Danny-Dasilva/CycleTLS.svg)](https://github.com/Danny-Dasilva/CycleTLS/blob/main/LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Danny-Dasilva/CycleTLS/cycletls)](https://goreportcard.com/report/github.com/Danny-Dasilva/CycleTLS/cycletls)
+![build](https://github.com/procoder17/CycleTLSForGoProxy/actions/workflows/test_golang.yml/badge.svg)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg)](http://godoc.org/github.com/procoder17/CycleTLSForGoProxy/cycletls) 
+[![license](https://img.shields.io/github/license/procoder17/CycleTLSForGoProxy.svg)](https://github.com/procoder17/CycleTLSForGoProxy/blob/main/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/procoder17/CycleTLSForGoProxy/cycletls)](https://goreportcard.com/report/github.com/procoder17/CycleTLSForGoProxy/cycletls)
 [![npm version](https://img.shields.io/npm/v/cycletls.svg)](https://www.npmjs.org/package/cycletls)
  <a href="https://discord.gg/gsmxMHrwhu">
   <img src="https://img.shields.io/discord/1100945880888115200?logo=discord"
       alt="chat on Discord"></a>
 </div>
 
-If you have a API change or feature request feel free to open an [Issue](https://github.com/Danny-Dasilva/CycleTLS/issues/new/choose)
+If you have a API change or feature request feel free to open an [Issue](https://github.com/procoder17/CycleTLSForGoProxy/issues/new/choose)
 
 
 
@@ -69,7 +69,7 @@ $ npm install cycletls
 Golang
 
 ```bash
-$ go get github.com/Danny-Dasilva/CycleTLS/cycletls 
+$ go get github.com/procoder17/CycleTLSForGoProxy/cycletls 
 ```
 
 # Usage 
@@ -111,7 +111,7 @@ package main
 
 import (
 	"log"
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 func main() {
@@ -136,7 +136,7 @@ func main() {
 
 ```go
 import (
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 	http "github.com/Danny-Dasilva/fhttp" // note this is a drop-in replacement for net/http
 )
 
@@ -175,7 +175,7 @@ initCycleTLS().then((cycleTLS) => {});
 
 ```go
 import (
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 //The `Init` function initializes golang channels to process requests. 
@@ -351,7 +351,7 @@ package main
 import (
 	"log"
 
-	cycletls "github.com/Danny-Dasilva/CycleTLS/cycletls"
+	cycletls "github.com/procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 // Static variables
@@ -432,7 +432,7 @@ Set module-aware mode
 `go env -w  GO111MODULE=off`
 
 Install golang dependencies
-`go get github.com/Danny-Dasilva/CycleTLS/cycletls`
+`go get github.com/procoder17/CycleTLSForGoProxy/cycletls`
 
 install npm packages (this command handles the above)
 
@@ -563,7 +563,7 @@ const initCycleTLS = require("cycletls");
 package main
 
 import (
-    "github.com/Danny-Dasilva/CycleTLS/cycletls"
+    "github.com/procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 func main() {
@@ -597,7 +597,7 @@ func main() {
 ```
 
 
-Feel free to open an [Issue](https://github.com/Danny-Dasilva/CycleTLS/issues/new/choose) with a feature request for specific file type support. 
+Feel free to open an [Issue](https://github.com/procoder17/CycleTLSForGoProxy/issues/new/choose) with a feature request for specific file type support. 
 </details>
 
 
@@ -670,7 +670,7 @@ async function processCookies(response, url, cookieJar) {
 package main
 
 import (
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 	"log"
 	"net/http/cookiejar"
 	"net/url"
@@ -793,7 +793,7 @@ package main
 
 import (
 	"bytes"
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 	"log"
 	"mime/multipart"
 )
@@ -834,7 +834,7 @@ func main() {
 package main
 
 import (
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 	"bytes"
 	"io"
 	"log"
@@ -925,7 +925,7 @@ package main
 import (
     "log"
 	  "net/url"
-    "github.com/Danny-Dasilva/CycleTLS/cycletls"
+    "github.com/procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 func main() {
@@ -1009,7 +1009,7 @@ package main
 import (
     "encoding/base64"
     "os"
-    "github.com/Danny-Dasilva/CycleTLS/cycletls"
+    "github.com/procoder17/CycleTLSForGoProxy/cycletls"
 )
 
 func main() {
@@ -1045,7 +1045,7 @@ func main() {
 
 Additional file type support is planned.
 
-Feel free to open an [Issue](https://github.com/Danny-Dasilva/CycleTLS/issues/new/choose) with a feature request for specific file type support. 
+Feel free to open an [Issue](https://github.com/procoder17/CycleTLSForGoProxy/issues/new/choose) with a feature request for specific file type support. 
 </details>
 
 
@@ -1059,7 +1059,7 @@ In golang set `ForceHTTP1` in Options
 package main
 
 import (
-	"github.com/Danny-Dasilva/CycleTLS/cycletls"
+	"github.com/procoder17/CycleTLSForGoProxy/cycletls"
 	"log"
 )
 
@@ -1120,7 +1120,7 @@ $ GOOS=linux GOARCH=arm go build -o ./dist/index ./golang && chmod +x ./dist/ind
 
 With the above command you can simply run `./index` and CycleTLS should function as intended.
 
-Use this [gist](https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63) for different Operating Systems that support cross-compilation and feel free to open an [Issue](https://github.com/Danny-Dasilva/CycleTLS/issues/new/choose) with a feature request for your specific operating system use case. 
+Use this [gist](https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63) for different Operating Systems that support cross-compilation and feel free to open an [Issue](https://github.com/procoder17/CycleTLSForGoProxy/issues/new/choose) with a feature request for your specific operating system use case. 
 
 </details>
 
